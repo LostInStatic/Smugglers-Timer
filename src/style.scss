@@ -1,0 +1,49 @@
+$background-color: hsl(198, 100%, 9%);
+$gradient-color: hsl(198, 100%, 28%);
+$primary-color: hsl(44, 100%, 81%);
+$accent-color: hsl(14, 100%, 28%);
+
+body {
+	margin: 0;
+	background: $background-color;
+}
+.background {
+	background: linear-gradient(0deg, $background-color 0%, $gradient-color 100%) no-repeat;
+}
+.main-container {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 30em;
+	padding: 1em;
+	margin-right: auto;
+	margin-left: auto;
+	color: #ffffff;
+	text-align: center;
+}
+
+.timer-settings label {
+	display: block;
+	width: 100%;
+	margin: 10px;
+	text-align: left;
+}
+
+.timer-settings input {
+	float: right;
+	width: 5em;
+}
+.timer-button {
+	width: 15em;
+	height: 3em;
+	margin: 10px;
+	background-color: $primary-color;
+	border: outset $accent-color;
+}
+
+.timer-msgs{
+	box-sizing: border-box;
+	width: 100%;
+	height: 2em;
+	padding: 0.5em;
+	font-size: 5rem;
+}
