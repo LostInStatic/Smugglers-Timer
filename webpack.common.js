@@ -2,7 +2,7 @@ const path = require('path');
 const extractCss = require('mini-css-extract-plugin');
 
 const inputPath = path.resolve(__dirname, 'src');
-const outputPath = path.resolve(__dirname, 'dist');
+const outputPath = path.resolve(__dirname, 'docs');
 
 module.exports = {
   context: inputPath,
