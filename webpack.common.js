@@ -7,7 +7,7 @@ const outputPath = path.resolve(__dirname, 'docs');
 module.exports = {
   context: inputPath,
   entry: {
-    'main': './index.tsx',
+    'main': './app.tsx',
     'serviceWorker': './serviceWorker.js'
   },
   output: {
