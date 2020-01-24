@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "webpack --config webpack.prod.js",
-    "dev": "webpack-dev-server --progress --colors --config webpack.dev.js",
-    "start": "webpack --config webpack.dev.js && npm run dev"
+    "serve": "webpack-dev-server --progress --colors --config webpack.dev.js",
+    "serve-hot": "webpack-dev-server --progress --colors --config webpack.dev.js --hot",
+    "start": "webpack --config webpack.dev.js && npm run serve",
+    "start-hot": "webpack --config webpack.dev.js && npm run serve-hot"
   },
   "keywords": [],
   "author": "",

@@ -9,7 +9,7 @@ module.exports = merge(common, {
 /* 	watch: true, */
 	mode: 'development',
 	devtool: 'inline-source-map',
-	plugins: [
+	/* plugins: [
 		new browsersync(
 			{
 				host: 'localhost',
@@ -20,6 +20,6 @@ module.exports = merge(common, {
 				reload: false
 			}
 		)
-	]
+	] */
 }
 )
