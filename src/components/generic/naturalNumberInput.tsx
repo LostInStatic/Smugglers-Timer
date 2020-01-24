@@ -12,7 +12,7 @@ const NaturalNumberInput: React.FC<IProps> = (props) => {
 	return <label
 		className={
 			"input-nat-number " +
-			props.className
+			(props.className || '')
 		}
 	>
 		{props.label}
