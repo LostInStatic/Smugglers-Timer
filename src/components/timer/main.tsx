@@ -1,5 +1,6 @@
 import React = require("react");
-import NaturalNumberInput from "./generic/naturalNumberInput";
+import NaturalNumberInput from "../generic/naturalNumberInput";
+import TimerButton from "./button";
 
 
 
@@ -89,76 +90,9 @@ export default class Timer extends React.Component {
 					/>
 				</div>
 				<div className='timer-msgs'>{this.state.msg}</div>
-				<TimerButton isRunning={this.state.isRunning} onClick={() => this.runTimer()}></TimerButton>
+				<TimerButton isRunning={this.state.isRunning} callback={() => this.runTimer()}></TimerButton>
 			</div>
 
-		)
-	}
-}
-
-export class TimerButton extends React.Component {
-	props: {
-		isRunning: boolean
-		onClick: Function
-	};
-	render() {
-		let className = 'timer-button';
-		let innerText = 'Start'
-
-		if (this.props.isRunning) {
-			className += ' timer-running'
-			innerText = '***'
-		}
-
-		return <button
-			className={className}
-			onClick={() => this.props.onClick()}
-		>
-			{innerText}
-		</button>
-	}
-};
-
-class BaseTimeSetting extends React.Component {
-	props: {
-		onChange: Function
-		baseTime: number,
-	};
-
-	render() {
-		return (
-			<label> Base time:
-				<input
-					type="number"
-					name="base time"
-					min="1"
-					required
-					value={this.props.baseTime}
-					onChange={(event) => this.props.onChange(event)}
-				/>
-			</label>
-		)
-	}
-}
-
-class OffsetSetting extends React.Component {
-	props: {
-		onChange: Function
-		offset: number,
-	};
-
-	render() {
-		return (
-			<label> Maximal random offset:
-				<input
-					type="number"
-					name="offset"
-					min="0"
-					required
-					value={this.props.offset}
-					onChange={(event) => this.props.onChange(event)}
-				/>
-			</label>
 		)
 	}
 }

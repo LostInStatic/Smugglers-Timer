@@ -1,4 +1,4 @@
-import Timer from './components/timer'
+import Timer from './components/timer/main'
 import { render } from 'react-dom'
 import * as React from 'react'
 import './style.scss'
