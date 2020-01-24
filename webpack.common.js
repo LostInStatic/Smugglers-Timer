@@ -17,8 +17,7 @@ module.exports = {
   devServer: {
     contentBase: outputPath,
     watchContentBase: true,
-    disableHostCheck: true,
-    open: true
+    disableHostCheck: true
   },
   module: {
     rules: [
