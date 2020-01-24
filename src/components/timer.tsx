@@ -1,5 +1,6 @@
 import React = require("react");
-import { element } from "prop-types";
+import NaturalNumberInput from "./generic/naturalNumberInput";
+
 
 
 
@@ -11,7 +12,7 @@ export default class Timer extends React.Component {
 	state: {
 		isRunning: boolean,
 		baseTime: number,
-		offset: number,
+		maxOffset: number,
 		msg: string
 	};
 
@@ -20,30 +21,30 @@ export default class Timer extends React.Component {
 		this.state = {
 			isRunning: false,
 			baseTime: 5,
-			offset: 5,
+			maxOffset: 5,
 			msg: ''
 		};
 
-		audioFixSafari([
+		safariAudioFix([
 			this.props.audioStart,
 			this.props.audioEnd
 		]);
 	};
 
-	handleBaseTimeChange(event: React.FormEvent<HTMLInputElement>) {
+	handleBaseTimeChange(baseTime: number) {
 		this.setState({
-			baseTime: parseInt(event.currentTarget.value)
+			baseTime
 		});
 	};
 
-	handleOffsetChange(event: React.FormEvent<HTMLInputElement>) {
+	handleOffsetChange(maxOffset: number) {
 		this.setState({
-			offset: parseInt(event.currentTarget.value)
+			maxOffset
 		});
 	}
 
 	async mainTimer() {
-		let timeMs = (this.state.baseTime + randPosOffset(this.state.offset)) * 1000;
+		let timeMs = (this.state.baseTime + randPosOffset(this.state.maxOffset)) * 1000;
 		this.props.audioStart.play();
 		this.setState({ msg: 'GO!' });
 		console.log(timeMs);
@@ -76,13 +77,15 @@ export default class Timer extends React.Component {
 		return (
 			<div>
 				<div className="timer-settings">
-					<BaseTimeSetting
-						baseTime={this.state.baseTime}
-						onChange={(event) => this.handleBaseTimeChange(event)}
+					<NaturalNumberInput
+						label="Base time:"
+						value={this.state.baseTime}
+						callback={val => this.handleBaseTimeChange(val)}
 					/>
-					<OffsetSetting
-						offset={this.state.offset}
-						onChange={(event) => this.handleOffsetChange(event)}
+					<NaturalNumberInput
+						label="Maximal random offset:"
+						value={this.state.maxOffset}
+						callback={val => this.handleOffsetChange(val)}
 					/>
 				</div>
 				<div className='timer-msgs'>{this.state.msg}</div>
@@ -168,16 +171,16 @@ function randPosOffset(maxOffset: number) {
 	return Math.floor(Math.random() * (maxOffset + 1));
 }
 
-function audioFixSafari(audioToFix: Array<HTMLAudioElement>) {
+function safariAudioFix(audioToFix: Array<HTMLAudioElement>) {
 	document.addEventListener(
 		'touchstart',
 		() => {
-			audioToFix.forEach(element => {
-				element.muted = true;
-				element.play();
-				element.pause()
-				element.currentTime = 0;
-				element.muted = false;
+			audioToFix.forEach(audioElement => {
+				audioElement.muted = true;
+				audioElement.play();
+				audioElement.pause()
+				audioElement.currentTime = 0;
+				audioElement.muted = false;
 			});
 		}
 	)
