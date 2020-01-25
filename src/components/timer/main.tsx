@@ -1,7 +1,6 @@
-import React = require("react");
-import NaturalNumberInput from "../generic/naturalNumberInput";
-import TimerButton from "./button";
-
+import React = require('react');
+import NaturalNumberInput from '../generic/naturalNumberInput';
+import TimerButton from './button';
 
 
 
@@ -18,7 +17,7 @@ export default class Timer extends React.Component {
 	};
 
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			isRunning: false,
 			baseTime: 5,
@@ -30,13 +29,13 @@ export default class Timer extends React.Component {
 			this.props.audioStart,
 			this.props.audioEnd
 		]);
-	};
+	}
 
 	handleBaseTimeChange(baseTime: number) {
 		this.setState({
 			baseTime
 		});
-	};
+	}
 
 	handleOffsetChange(maxOffset: number) {
 		this.setState({
@@ -53,7 +52,7 @@ export default class Timer extends React.Component {
 		this.props.audioEnd.play();
 		this.setState({ msg: 'STOP!' });
 		await sleep(1000);
-	};
+	}
 
 	async preCountdown() {
 		this.setState({ msg: '3' });
@@ -66,12 +65,12 @@ export default class Timer extends React.Component {
 
 	async runTimer() {
 		if (this.state.isRunning) {
-			return
+			return;
 		}
 		this.setState({ isRunning: true });
 		await this.preCountdown();
 		await this.mainTimer();
-		this.setState({ isRunning: false })
+		this.setState({ isRunning: false });
 
 	}
 	render() {
@@ -93,7 +92,7 @@ export default class Timer extends React.Component {
 				<TimerButton isRunning={this.state.isRunning} callback={() => this.runTimer()}></TimerButton>
 			</div>
 
-		)
+		);
 	}
 }
 
@@ -112,10 +111,10 @@ function safariAudioFix(audioToFix: Array<HTMLAudioElement>) {
 			audioToFix.forEach(audioElement => {
 				audioElement.muted = true;
 				audioElement.play();
-				audioElement.pause()
+				audioElement.pause();
 				audioElement.currentTime = 0;
 				audioElement.muted = false;
 			});
 		}
-	)
+	);
 }

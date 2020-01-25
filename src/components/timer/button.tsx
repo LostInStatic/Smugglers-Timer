@@ -1,4 +1,4 @@
-import React = require("react");
+import React = require('react');
 
 interface IProps {
 	isRunning: boolean,
@@ -20,9 +20,9 @@ const TimerButton = (props: IProps) => {
 			onClick={() => props.callback()}
 		>
 			{innerText}
-		</button>
+		</button>;
 	}
-}
+};
 
 
 export default TimerButton;
